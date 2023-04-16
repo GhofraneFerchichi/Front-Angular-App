@@ -1,0 +1,35 @@
+<h1 class="my-4">List of blog Posts
+  <small>fetch from the backend api.</small>
+</h1>
+<button class="btn btn-sm btn-info" style="margin-bottom: 5px" (click)="onCreatePost()">Créer +</button>
+<!-- Blog Post -->
+<div style="height: 450px; overflow-y: auto">
+  <div class="card mb-4" *ngFor="let post of posts">
+    <img class="card-img-top" src="{{post.image}}" alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title">{{post.title}}</h2>
+      <p class="card-text">
+        {{post.content}}
+      </p>
+      <button (click)="onShowComments(post.id)" class="btn btn-primary">Voir plus &rarr;</button>
+    </div>
+    <div class="card-footer text-muted">
+      Posted on {{post.created_at | date}} by
+      <a >{{post.user.name}}</a>
+      <div id="comment" style="height: 100px; overflow-y: auto;">
+        <ul class="list-group" style="position: relative; ">
+          <li class="list-group-item" *ngFor="let comment of post.comments">
+            {{comment.content}}
+            <span class="text-right">
+            le <i class="text-info">{{comment.created_at | date}}</i> by {{comment.user.username}}
+          </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -24,6 +24,14 @@ import { NavComponent } from './admin/nav/nav.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { ProductsComponent } from './front/shop/products/products.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AddPostComponent } from './admin/add-post/add-post.component';
+import { from } from 'rxjs';
+import { PostComponent } from './admin/post/post.component';
+import { PostsEditComponent } from './admin/add-post/posts/posts-edit/posts-edit.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
+
 
 
 @NgModule({
@@ -42,7 +50,10 @@ import { ProductsComponent } from './front/shop/products/products.component';
     UpdateProductComponent,
     FooterComponent,
     NavComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddPostComponent,
+    PostComponent,
+    PostsEditComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +63,16 @@ import { ProductsComponent } from './front/shop/products/products.component';
     ToastrModule.forRoot(),
     AppRoutingModule,
     NgxPaginationModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      {path : '', component:HomeComponent},
+      
+      {path : 'post/:id', component:PostComponent},
+      {path:'home' ,component:HomeComponent},
+      {path:'add-post' ,component:AddPostComponent},
+      {path: 'posts/edit/:id', component: PostsEditComponent}, 
+
+    ]),
+    EditorModule
     
     
   ],
