@@ -1,0 +1,69 @@
+
+<body>
+     
+  <!--====== PRELOADER PART START ======-->
+  
+
+  
+  <!--====== PRELOADER PART START ======-->
+  
+  <!--====== HEADER PART START ======-->
+  
+  <header id="header-part">
+     
+   <app-navbar></app-navbar>
+      
+  </header>
+  
+  <!--====== HEADER PART ENDS ======-->
+ 
+  <!--====== SEARCH BOX PART START ======-->
+  
+  <div class="search-box">
+      <div class="serach-form">
+          <div class="closebtn">
+              <span></span>
+              <span></span>
+          </div>
+          <form action="#">
+              <input type="text" placeholder="Search by keyword">
+              <button><i class="fa fa-search"></i></button>
+          </form>
+      </div> <!-- serach form -->
+  </div>
+  
+  <!--====== SEARCH BOX PART ENDS ======-->
+ 
+
+<header>
+  <div>
+    <span class="logo1" >The</span>
+    <span class="logo2" >Blog</span>
+    <span class="logo3" >Home</span>
+<div class = "blogdetails" class="content">
+  <div class="container">
+      <hr>
+      <div class="row" *ngFor = "let post of posts | async">
+          <div>
+              <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+              <div>
+                  <i class="fas fa-user"></i> Author : <b>{{post.userName}}</b><br><br>
+              </div>
+              <p [innerHTML]="post.content"></p>
+             
+ <div>
+  <a type="button" href="/posts/show/{{post.id}}" class="read-more btn btn-primary">Read More..</a>
+  &nbsp;
+  <a type="button" href="posts/edit/{{post.id}}" class="read-more btn btn-primary">Edit</a>
+  &nbsp;
+  <button (click)="deleteOne(post.id)" class="btn btn-danger">Delete</button>
+
+</div>
+              <hr>
+          </div>
+          <hr>
+      </div>
+  </div>
+</div></div></header>
+</body>
+<app-footer></app-footer>
