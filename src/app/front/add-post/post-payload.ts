@@ -1,15 +1,17 @@
 
     export class PostPayload {
-        id:string;
+        [x: string]: any;
+        id:number;
         content:string;
         title:string;
-        userName:string ='';
+        user!: string;
+        image!:string;
       
-        constructor(id: string, title: string, content: string) {
+        constructor(id: number, title: string, content: string) {
           this.id = id;
           this.content = content;
           this.title = title;
-        this.userName=this.userName;
+          this.image=this.image;
          
         }
       }

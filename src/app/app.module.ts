@@ -2,7 +2,7 @@ import { ListProductComponent } from './admin/list-product/list-product.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './front/home/home.component';
@@ -17,21 +17,22 @@ import { UpdateProductComponent } from './admin/update-product/update-product.co
 import { NavbarComponent } from './front/navbar/navbar.component';
 import { FooterComponent } from './front/footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
 import { ProductService } from './services/product.service';
 import { WishListService } from './services/wish-list.service';
+import { PostsShowComponent } from './front/add-post/posts/posts-show/posts-show.component';
 import { NavComponent } from './admin/nav/nav.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { ProductsComponent } from './front/shop/products/products.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AddPostComponent } from './admin/add-post/add-post.component';
+import { AddPostComponent } from './front/add-post/add-post.component';
 import { from } from 'rxjs';
-import { PostComponent } from './admin/post/post.component';
-import { PostsEditComponent } from './admin/add-post/posts/posts-edit/posts-edit.component';
+import { PostComponent } from './front/post/post.component';
+import { PostsEditComponent } from './front/add-post/posts/posts-edit/posts-edit.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
-
+import { HomepostComponent } from './front/homepost/homepost.component';
+import { DatePipe } from '@angular/common';
+import { PostsComponent } from './front/add-post/posts/posts.component';
 
 
 @NgModule({
@@ -53,30 +54,37 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     ProductsComponent,
     AddPostComponent,
     PostComponent,
-    PostsEditComponent
+    PostsEditComponent,
+    AddPostComponent,
+    PostsComponent,
+    HomepostComponent,
+    PostsShowComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
+    
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
     NgxPaginationModule,
     RouterModule.forRoot([
-      {path : '', component:HomeComponent},
+      {path : '', component:HomepostComponent},
       
-      {path : 'post/:id', component:PostComponent},
+      {path : 'post/:id', component:PostsShowComponent},
       {path:'home' ,component:HomeComponent},
       {path:'add-post' ,component:AddPostComponent},
       {path: 'posts/edit/:id', component: PostsEditComponent}, 
+      {path: 'posts/show/:id', component: PostsShowComponent},
 
     ]),
-    EditorModule
+    EditorModule,
+    CommonModule,
+    FormsModule 
     
     
   ],
-  providers: [ProductService,WishListService],
+  providers: [ProductService,WishListService,EditorModule,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

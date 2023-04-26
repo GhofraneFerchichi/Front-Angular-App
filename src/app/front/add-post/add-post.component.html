@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+<div class="container my-4">
+  <h3 class="text-center">Create a new post..</h3>
+  <hr>
+  <form [formGroup]="addPostForm" (ngSubmit)="addPost()">
+    <div class="form-group">
+      <label for="title">Post Title</label>
+      <input type="text" class="form-control" id="title" [formControlName]="'title'" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <editor [formControlName]="'body'" [init]="{plugins:'link'}"></editor>
+    </div>
+    <div class="form-group">
+  <label for="image">Image</label>
+  <input type="file" id="file-input" (change)="onFileSelected($event)" class="form-control"/>
+  <img id="image-preview">
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="my-4">
+    <div *ngFor="let post of posts">
+      <h5>{{post.title}}</h5>
+      <div [innerHTML]="post.content"></div>
+      <input type="file" (change)="onFileSelected($event)"  class="form-control" placeholder="length">
+
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

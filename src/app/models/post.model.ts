@@ -1,8 +1,14 @@
-import {User} from './user';
-import {CommentModel} from './comment.model';
+import { CommentModel } from "./comment.model";
+import { User } from "./user";
+
 
 export class PostModel {
-  constructor(
+   id: any;
+  title: any;
+  content: any;
+
+  constructor(){}
+ /* constructor(
     public id: number,
     public title: string,
     public content: string,
@@ -14,5 +20,5 @@ export class PostModel {
 
   public created_at?: string,
   public updated_at?: string,
-  ) {}
+  ) {}*/
 }

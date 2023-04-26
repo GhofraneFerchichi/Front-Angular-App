@@ -93,7 +93,9 @@ h6 {
 	color: #1d2025;
 	margin: 0px;
 }
-
+.blogdetails .singlePost{
+    display: inline-block;
+}
 h1 {
 	font-weight: 500;
 }

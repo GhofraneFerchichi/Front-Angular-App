@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostService} from '../../../../services/post.service';
-import {PostModel} from '../../../../models/post.model';
+import { PostpostModel } from 'src/app/models/post'; 
+import { CommentModel } from 'src/app/models/comment.model';
+import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-posts-show',
@@ -9,7 +11,7 @@ import {PostModel} from '../../../../models/post.model';
   styleUrls: ['./posts-show.component.css']
 })
 export class PostsShowComponent implements OnInit {
-  post: PostModel;
+  post!: PostpostModel;
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
@@ -17,9 +19,9 @@ export class PostsShowComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.postService.getPost(id).subscribe(
-      (receivedPost: PostModel) => {
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.postService.getOne(id).subscribe(
+      (receivedPost: PostpostModel) => {
           this.post = receivedPost;
       },
       (error) => {
@@ -44,5 +46,32 @@ export class PostsShowComponent implements OnInit {
 
   onEdite(id: number) {
     this.router.navigate(['/posts/edit/' + id]);
+  }
+
+  deleteComment(id: string){
+    let newComments = this.post.comments?.filter((comment)=>{
+
+      return comment.id!=id;
+
+    });
+
+    this.post.comments=newComments;
+  
+  
+    this.postService.updateOne(this.post.id, this.post).subscribe();
+    
+  }
+
+  addComment(comment:CommentModel){
+
+    
+      let newComments = this.post.comments;
+      newComments?.push(comment);
+      this.post.comments= newComments
+
+      
+      this.postService.updateOne(this.post.id,this.post)
+
+
   }
 }

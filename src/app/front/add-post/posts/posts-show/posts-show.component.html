@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="card mb-4" style="margin-top: 25px">
+  <br><br>
+  <h1 class="card-title">{{post.title}}</h1>
+  <br><br><br><br>
+    <img class="card-img-top" src="{{post.image}}" alt="Post Image">
+    <div class="card-body">
+     
+      <p class="card-text">
+        {{post.content}}
+      </p>
+
+      <br><br><br><br><br>
+      <div style="text-align: center">
+        <button class="btn btn-warning" (click)="onEdite(post.id)">Editer</button>
+        <button class="btn btn-danger" (click)="onDelete(post.id)">Supprimer</button>
+      </div>
+    </div>
+    
+    <div style="width: 90%" class="card-footer text-muted">
+      Posted on {{post.created_at | date:'yyyy-MM-dd'}} by
+      <a >{{post.user}}</a>
+      <br><br><br><br>
+
+
+        <div>Add Comments Form Here</div>
+
+
+      <div id="comment" style="height: 400px; overflow-y: auto; width: 100%;">
+        <ul class="list-group" style="position: relative; ">
+          <li style="min-width:40%" class="list-group-item" *ngFor="let comment of post?.comments">
+            {{comment.content}}
+            <span class="text-right">
+              <br><br>
+            <i class="text-info">{{comment.created_at | date}}</i> by {{comment.user}}
+          </span>
+          <button (click)="deleteComment(comment.id)">Delete</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ 
+  <app-footer></app-footer>
+

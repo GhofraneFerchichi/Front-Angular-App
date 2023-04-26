@@ -1,0 +1,94 @@
+.card {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+  }
+  
+  .card-img-top {
+    max-height: 400px;
+    object-fit: cover;
+    max-width: 50%;
+  }
+  
+  .card-title {
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
+  
+  .card-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 60%;
+  }
+  
+  .btn {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  
+  .btn-warning {
+    text-align: center;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+  }
+  
+  .btn-danger {
+    background-color: #d9534f;
+    border-color: #d9534f;
+  }
+  
+  .card-footer {
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .list-group-item {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .text-right {
+    float: right;
+  }
+  .card,
+.card-img-top,
+.card-title,
+.card-text,
+.btn,
+.card-footer,
+.list-group-item {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Rounded corners and larger buttons */
+.btn {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+/* Add padding to the text */
+.card-text,
+.list-group-item {
+  padding: 10px;
+}
+
+/* Border-radius on card */
+.card {
+  border-radius: 20px;
+}
+
+/* Add a little space between list-group-items */
+.list-group-item {
+  margin-bottom: 20px;
+}

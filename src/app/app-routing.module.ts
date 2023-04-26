@@ -10,6 +10,12 @@ import { ListCategoryComponent } from './admin/list-category/list-category.compo
 import { CategoryProduct } from './models/category-product';
 import { ListProductComponent } from './admin/list-product/list-product.component';
 import { ProductsComponent } from './front/shop/products/products.component';
+import { AddPostComponent } from './front/add-post/add-post.component';
+import { PostComponent } from './front/post/post.component';
+import { HomepostComponent } from './front/homepost/homepost.component';
+import { PostsEditComponent } from './front/add-post/posts/posts-edit/posts-edit.component';
+import { PostsShowComponent } from './front/add-post/posts/posts-show/posts-show.component';
+
 
 const routes: Routes = [
   {path: 'products/:id', component: SingleProductComponent},
@@ -29,6 +35,11 @@ const routes: Routes = [
 
   //{path:'favoriteProduct', component: WishListComponent},
   { path: 'listProduct/:id', component: CategoryProduct },
+  //add blog post
+  { path: 'addblog', component: AddPostComponent },
+  { path: 'showblog', component: HomepostComponent},
+  { path: 'show', component: PostsShowComponent},
+  { path: 'edit', component: PostsEditComponent},
 
 ];
 

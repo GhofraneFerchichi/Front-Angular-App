@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PostPayload } from '../admin/add-post/post-payload';
+import { PostPayload } from '../front/add-post/post-payload';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,20 +11,24 @@ export class AddPostService {
   constructor(private httpClient:HttpClient) {
 
   }
+  uploadImage(file: File): Observable<PostPayload> {
+    const endpoint = 'http://localhost:8181/api/posts/upload-image';
+    const formData = new FormData();
+    formData.append('image', file, file.name);
+    return this.httpClient.post<PostPayload>(endpoint, formData);
+  }
+  addPost(postPayload: any){
 
-
-  addPost(postPayload:PostPayload){
-
-    return this.httpClient.post('http://localhost:8082/api/posts',postPayload);
+    return this.httpClient.post('http://localhost:8181/api/posts/add',postPayload);
   }
 
   getAllPosts():Observable<Array<PostPayload>>{
-    return this.httpClient.get<Array<PostPayload>>("http://localhost:8082/api/posts/all");
+    return this.httpClient.get<Array<PostPayload>>('http://localhost:8181/api/posts/all');
   }
 
 
   getPost(permaLink:Number):Observable<PostPayload>{
-    return this.httpClient.get<PostPayload>('http://localhost:8082/api/posts/get/'+ permaLink);
+    return this.httpClient.get<PostPayload>('https://localhost:8181/api/posts/get'+ permaLink);
   }
 
 

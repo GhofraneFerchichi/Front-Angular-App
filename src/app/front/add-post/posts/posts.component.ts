@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {PostModel} from '../../models/post.model';
-import {PostService} from '../../services/post.service';
+import { PostpostModel } from 'src/app/models/post';
+import {PostService} from '../../../services/post.service';
 import {Router} from '@angular/router';
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-todos',
@@ -10,16 +11,17 @@ import {Router} from '@angular/router';
 })
 export class PostsComponent implements OnInit, AfterViewInit {
 
-  posts: PostModel[] = [];
-  constructor(private postService: PostService, private router: Router) { }
+  posts: PostpostModel[] = [];
+  constructor(private postService: PostService,
+     private router: Router) { }
 
   ngOnInit() {
-    this.postService.getPosts();
+    this.postService.getList();
   }
 
   ngAfterViewInit(): void {
     this.postService.posts_$.subscribe(
-      (posts: PostModel[]) => {
+      (posts: PostpostModel[]) => {
         this.posts = posts;
       }
     );
